@@ -21,14 +21,14 @@ If you find this code useful in your research, please consider citing:
 
 ### 2. Installation
 
-git clone https://github.com/rkachach/traffic-monitor
+git clone https://github.com/JdeRobot/traffic-monitor
 
 #### 2.1 Requiered Dependencies
 
      sudo apt-get install libopencv-dev libcairomm-1.0-dev libgtkmm-3.0-dev libgsl-dev
 
 The code was tested with opencv 3.1 version. Traffic monitor uses the OpenCV video capture feature, thus
-you need to have version that was build with the -DWITH_FFMPEG=ON enabled.
+you need to have version that was built with the -DWITH_FFMPEG=ON enabled.
 
 #### 2.3 Build
 
