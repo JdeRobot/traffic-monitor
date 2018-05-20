@@ -1,5 +1,11 @@
 # traffic-monitor
-Traffic monitor is a vision based traffic sensor, able to gather several traffic stats using a simple stationary camera
+Traffic monitor is a vision based traffic sensor, able to gather several traffic stats using a simple stationary calibrated camera. TM is able
+to process traffic flow on multiple lanes simultaneously in real-time. In the current version the software is able to:
+..* Estimate the velocity of the vehicles
+..* Classify the vehicles into five categories: Motorcycle, Car, Van, Bus and Truck
+..* Vehicle count
+
+[In this example](https://youtu.be/5Nu_BTPTc94) we can see the tool working on an offiline video of highway with multiple lanes.
 
 ### 1. Related Papers
 
@@ -21,14 +27,11 @@ If you find this code useful in your research, please consider citing:
 
 ### 2. Installation
 
-git clone https://github.com/JdeRobot/traffic-monitor
+git clone https://github.com/rkachach/traffic-monitor
 
 #### 2.1 Requiered Dependencies
 
-     sudo apt-get install libopencv-dev libcairomm-1.0-dev libgtkmm-3.0-dev libgsl-dev
-
-The code was tested with opencv 3.1 version. Traffic monitor uses the OpenCV video capture feature, thus
-you need to have version that was built with the -DWITH_FFMPEG=ON enabled.
+sudo apt-get install libopencv-dev libcairomm-1.0-dev libgtkmm-3.0-dev libgsl-dev
 
 #### 2.3 Build
 
@@ -78,6 +81,11 @@ All these files are located in the cfg directory.
     ./trafficmonitor path_to_video_file
     ./trafficmonitor ../traffic-videos/video-0042-o-4.MPG (i.e)
 
-### 5 License
+### traffic-monitor dataset
+
+As part of this work I created a database of video traffic with more than 100 videos. This dataset is available for [download](http://jderobot.org/store/trafficmonitor-dataset/) for
+acaedmic non-comercial use. Videos use the following syntax: **video-#id-[o|i]-#lanes.ext** where o/i stands for outgoing and ingoing videos.
+
+### 6 License
 
   Traffic monitor is released under a GPLv3 license. For a closed-source version of this software for commercial use, please contact the author(s).
