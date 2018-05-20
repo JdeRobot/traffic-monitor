@@ -1,9 +1,9 @@
 # traffic-monitor
 Traffic monitor is a vision based traffic sensor, able to gather several traffic stats using a simple stationary calibrated camera. TM is able
 to process traffic flow on multiple lanes simultaneously in real-time. In the current version the software is able to:
-..* Estimate the velocity of the vehicles
-..* Classify the vehicles into five categories: Motorcycle, Car, Van, Bus and Truck
-..* Vehicle count
+* Estimate the velocity of the vehicles
+* Classify the vehicles into five categories: Motorcycle, Car, Van, Bus and Truck
+* Vehicle count
 
 [In this example](https://youtu.be/5Nu_BTPTc94) we can see the tool working on an offiline video of highway with multiple lanes.
 
