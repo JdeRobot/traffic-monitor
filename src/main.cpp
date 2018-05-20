@@ -1,22 +1,21 @@
 /*
+ *  Copyright (C) 2016 Kachach Redouane
  *
- *  Copyright (C) 1997-2010 JDERobot Developers Team
- *
- *  This program is free software: you can redistribute it and/or modify
+ *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
+ *  the Free Software Foundation; either version 2 of the License, or
  *  (at your option) any later version.
  *
  *  This program is distributed in the hope that it will be useful,
  *  but WITHOUT ANY WARRANTY; without even the implied warranty of
  *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
+ *  GNU Library General Public License for more details.
  *
- *  You should have received a copy of the GNU General Public License
- *  along with this program.  If not, see http://www.gnu.org/licenses/.
+ *  You should have received a copy of the GNU General Public License v3
+ *  along with this program; if not, write to the Free Software
+ *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
  *
- *  Authors : David Lobato Bravo <dav.lobato@gmail.com>
- *
+ *  Authors : Kachach Redouane <redouane.kachach@gmail.com>
  */
 #include <signal.h>
 #include <cstdlib>
@@ -30,7 +29,6 @@
 #include <unistd.h>
 #include <chrono>
 #include <thread>
-
 
 #include "colorspacesmm.h"
 #include "view.h"
@@ -126,14 +124,14 @@ void processImage(cv::VideoCapture& capture, cv::Size& configSize, std::unique_p
     capture.set(CV_CAP_PROP_POS_AVI_RATIO, 0.0);
     capture >> img;
   }
+
   cv::cvtColor(img, img, CV_RGB2BGR);
   if(configSize != img.size())
+  {
     cv::resize(img, img,configSize);
+  }
 
-  colorspaces::Image cImg(img.cols,
-                          img.rows,
-                          fmt,
-                          &(img.data[0]));//data will be
+  colorspaces::Image cImg(img.cols, img.rows, fmt, &(img.data[0]));
 
   timeval timeStamp;
   gettimeofday(&timeStamp, NULL);
@@ -145,7 +143,7 @@ void processImage(cv::VideoCapture& capture, cv::Size& configSize, std::unique_p
   }
   else
   {
-    model->setImage(cImg.clone(), timeStamp);  //FIXME: find a way to avoid this copy
+    model->setImage(cImg, timeStamp);
   }
 }
 
@@ -208,8 +206,7 @@ int main(int argc, char **argv)
 
   try
   {
-    auto t1 = std::chrono::system_clock::now();
-    auto t2 = std::chrono::system_clock::now();
+    auto t1 = t2 = std::chrono::system_clock::now();
     cv::Size configSize = cv::Size((int)capture.get(CV_CAP_PROP_FRAME_WIDTH),(int)capture.get(CV_CAP_PROP_FRAME_HEIGHT));
     std::unique_ptr<Model> model;
     const int FPS = 30;

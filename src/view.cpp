@@ -1,6 +1,6 @@
 /*
  *
- *  Copyright (C) 1997-2010 JDERobot Developers Team
+ *  Copyright (C) 2016 Kachach Redouane / David Lobato Bravo
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -15,10 +15,10 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see http://www.gnu.org/licenses/.
  *
+ *  Authors : redouane kachach <redouane.kachach@gmail.com>
  *  Authors : David Lobato Bravo <dav.lobato@gmail.com>
  *
  */
-
 #include <stdlib.h>
 #include <string>
 #include <gtkmm.h>

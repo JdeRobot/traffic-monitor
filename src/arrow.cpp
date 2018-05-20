@@ -13,19 +13,18 @@
  *  GNU General Public License for more details.
  *
  *  You should have received a copy of the GNU General Public License
- *  along with this program.  If not, see http://www.gnu.org/licenses/. 
+ *  along with this program.  If not, see http://www.gnu.org/licenses/.
  *
  *  Authors : http://kapo-cpp.blogspot.com/2008/10/drawing-arrows-with-cairo.html
  *
  */
-
 #include "arrow.h"
 
 namespace trafficmonitor{
-   
+
 void ArrowHead::calcVertexes(double start_x, double start_y, double end_x, double end_y, double& x1, double& y1, double& x2, double& y2){
    double angle = atan2 (end_y - start_y, end_x - start_x) + M_PI;
-    
+
    x1 = end_x + arrow_lenght_ * cos(angle - arrow_degrees_);
    y1 = end_y + arrow_lenght_ * sin(angle - arrow_degrees_);
    x2 = end_x + arrow_lenght_ * cos(angle + arrow_degrees_);

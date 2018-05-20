@@ -1,4 +1,22 @@
-
+/*
+ *  Copyright (C) 2016 Kachach Redouane
+ *
+ *  This program is free software; you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation; either version 2 of the License, or
+ *  (at your option) any later version.
+ *
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU Library General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License v3
+ *  along with this program; if not, write to the Free Software
+ *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+ *
+ *  Authors : Kachach Redouane <redouane.kachach@gmail.com>
+ */
 #include <string.h>
 #include "rectify.h"
 
@@ -9,11 +27,11 @@
 #define NUMEC  NUMPUNTOS*2
 
 void Rectifier::invert(){
-  
+
    int i,j,k;
 
    memcpy(matriz_inversa, matriz_solucion, sizeof(double)*9);
-  
+
    gsl_matrix_view m = gsl_matrix_view_array (matriz_inversa, 3, 3);
    gsl_permutation * p = gsl_permutation_alloc (3);
    gsl_matrix* sol = gsl_matrix_alloc(3,3);
@@ -21,7 +39,7 @@ void Rectifier::invert(){
    int s;
    gsl_linalg_LU_decomp (&m.matrix, p, &s);
    gsl_linalg_LU_invert (&m.matrix, p, sol);
-  
+
    k=0;
    for (i=0; i<3; i++)
    {
@@ -39,20 +57,20 @@ void Rectifier::regresion_lineal_multiple(double a_data[NUMEC*8], double b_data[
    gsl_matrix *X, *cov;
    gsl_vector *y, *c;
    gsl_multifit_linear_workspace * work;
-  
+
    X = gsl_matrix_alloc(NUMEC,8);
    y = gsl_vector_alloc(NUMEC);
    c = gsl_vector_alloc (8);
    cov = gsl_matrix_alloc (8,8);
-  
-   /* Prepramos la matriz de muestras 
+
+   /* Prepramos la matriz de muestras
 
       NOTA: El sistema de ecuaciones a resolver contiene
       8 incognitas en vez de nueve. La novena incognita es
       igual a alfa (constante), y hay que inicializarla sino
       La solucion siempre sera el vector nulo
    */
-  
+
    for (i=0; i<NUMEC; i++)
    {
       for (j=0; j<8; j++)
@@ -61,19 +79,19 @@ void Rectifier::regresion_lineal_multiple(double a_data[NUMEC*8], double b_data[
          gsl_matrix_set(X,i,j,a_data[aux]);
       }
    }
-  
+
    /* Inicializamos el verctor de muestras */
    for (k=0; k<NUMEC; k++)
    {
       gsl_vector_set(y,k,b_data[k]);
    }
-  
+
    /* Inicializamos y resolver el sistema sobredimensioando */
    work = gsl_multifit_linear_alloc (NUMEC,8);
    gsl_multifit_linear (X,  y, c, cov, &chisq, work);
    gsl_multifit_linear_free (work);
 
-   /* sacamor por pantalla la suma de los cuadrados del error cometido 
+   /* sacamor por pantalla la suma de los cuadrados del error cometido
       a la hora de optimizar la matriz solución. */
 
    // printf(" Error cometido en la rectificacion = %g\n",chisq);
@@ -89,14 +107,14 @@ void Rectifier::regresion_lineal_multiple(double a_data[NUMEC*8], double b_data[
 /* Dados dos puntos p(x,y) y p'(x',y') obtiene dos
    ecuaciones fruto de la correspondencia entre los dos pnts
 */
-void Rectifier::obtener_ecuacion(Tpoint2D p , 
+void Rectifier::obtener_ecuacion(Tpoint2D p ,
                                  Tpoint2D p_prima,
                                  int **ecuacion){
-  
+
    /* alfa es el C9 de la matriz resultado, de momento es constante !!!*/
    int alfa = 1;
-   
-   /** 
+
+   /**
     * Rellenamos la primera fila con los siguientes coeficientes :
     *
     * Ecuacion1 -> x.x'.C7 + y.x'.C8 - C1.x -C2.y + x' -C3 -C9.x'  = 0
@@ -133,18 +151,18 @@ void Rectifier::resolver_sistema_de_ecuaciones(){
    double a_data[8*NUMEC];
    double b_data[NUMEC];
    int sistema_lineal_ecuaciones[NUMEC][9];
-   
+
    ecuacion_lineal = (int**) malloc(2*sizeof(int*));
    ecuacion_lineal[0] = (int*) malloc(9*sizeof(int));
    ecuacion_lineal[1] = (int*) malloc(9*sizeof(int));
-  
-   /* recoremos los dos arrays con los putnos almacenados, y vamos obteniendo 
+
+   /* recoremos los dos arrays con los putnos almacenados, y vamos obteniendo
       las ecuaciones para cada par de puntos. Cada par de pnts da lugar a dos ecuaciones.
    */
    for (i=0; i<NUMPUNTOS; i++)
    {
       obtener_ecuacion(pnts_elegidos_en_img_rectificada[i], pnts_elegidos_en_img_entrada[i], ecuacion_lineal);
-  
+
       /** copiamos la ecuacion obtenida al sistema lineal sobre dimensionado*/
       for (j=0; j<9; j++)
       {
@@ -168,7 +186,7 @@ void Rectifier::resolver_sistema_de_ecuaciones(){
    /** Copiamos el vector "b" (la ultima columna)*/
    for (j=0; j<NUMEC; j++)
       b_data[j] = sistema_lineal_ecuaciones[j][8];
-      
+
    /*resuelve_sistema_lineal(a_data, b_data);*/
    regresion_lineal_multiple(a_data, b_data);
 
@@ -179,14 +197,14 @@ void Rectifier::resolver_sistema_de_ecuaciones(){
 */
 Tpoint2D Rectifier::calcular_correspondencia(Tpoint2D in){
 
-   
+
    /*
      Formulas Base para pasar de un punto (x,y) -> (x',y'). Nuestro H(3x3) en este
      caso es "matriz_solucion" que es un array plano de 9 posiciones
-    
+
      x' = (h1*x + h2*y + h3)/(h7*x + h8*y + h9)
      y' = (h4*x + h5*y + h6)/(h7*x + h8*y + h9)
- 
+
    */
    Tpoint2D pout;
    pout.x = (int) (matriz_solucion[0]*in.x + matriz_solucion[1]*in.y + matriz_solucion[2])/
@@ -203,14 +221,14 @@ Tpoint2D Rectifier::calcular_correspondencia(Tpoint2D in){
    en la imagen original
 */
 Tpoint2D Rectifier::calcular_correspondencia_inv(Tpoint2D in){
-  
+
    /*
      Formulas Base para pasar de un punto (x,y) -> (x',y'). Nuestro H(3x3) en este
      caso es "matriz_solucion" que es un array plano de 9 posiciones
-    
+
      x' = (h1*x + h2*y + h3)/(h7*x + h8*y + h9)
      y' = (h4*x + h5*y + h6)/(h7*x + h8*y + h9)
- 
+
    */
    Tpoint2D pout;
    pout.x = (int) (matriz_inversa[0]*in.x + matriz_inversa[1]*in.y + matriz_inversa[2])/
@@ -272,19 +290,19 @@ void Rectifier::rectify(const colorspaces::Image& image, colorspaces::Image& out
          p = calcular_correspondencia(p_in);
          // printf("corres(%d:%d)\n",p.x,p.y);
 
-         /** 
+         /**
           * Si el punto resultante cae dentro de la imagen lo dibujamos
           * sino lo pintamos en blando
           */
          out_idx = i*outimage.width+j;
-          
+
          if ((p.x>=0) && (p.y>=0) && (p.x<=image.width) && (p.y<=image.height))
          {
             in_idx = p.y*image.width+p.x;
             r = image.data[in_idx*3] ;
             g = image.data[in_idx*3+1];
             b = image.data[in_idx*3+2];
-              
+
             outimage.data[out_idx*3] = r ;
             outimage.data[out_idx*3+1] = g;
             outimage.data[out_idx*3+2] = b;

@@ -1,5 +1,5 @@
 /*
- *  Copyright (C) 2006 José María Cañas Plaza / Kachach Redouane
+ *  Copyright (C) 2016 Kachach Redouane
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -11,12 +11,11 @@
  *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *  GNU Library General Public License for more details.
  *
- *  You should have received a copy of the GNU General Public License
+ *  You should have received a copy of the GNU General Public License v3
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
  *
- *  Authors : José María Cañas Plaza <jmplaza@gsyc.escet.urjc.es>
- *  Authors : Kachach Redouane
+ *  Authors : Kachach Redouane <redouane.kachach@gmail.com>
  */
 #include <sys/time.h>
 #include <string.h>
