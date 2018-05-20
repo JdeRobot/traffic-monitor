@@ -5,7 +5,7 @@ to process traffic flow on multiple lanes simultaneously in real-time. In the cu
 * Classify the vehicles into five categories: Motorcycle, Car, Van, Bus and Truck
 * Vehicle count
 
-[In this example](https://youtu.be/5Nu_BTPTc94) we can see the tool working on an offiline video of highway with multiple lanes.
+[In this video](https://youtu.be/5Nu_BTPTc94) we can see the tool working on an offiline video of highway with multiple lanes.
 
 ### 1. Related Papers
 
@@ -81,10 +81,11 @@ All these files are located in the cfg directory.
     ./trafficmonitor path_to_video_file
     ./trafficmonitor ../traffic-videos/video-0042-o-4.MPG (i.e)
 
-### traffic-monitor dataset
+### 5 traffic-monitor dataset
 
 As part of this work I created a database of video traffic with more than 100 videos. This dataset is available for [download](http://jderobot.org/store/trafficmonitor-dataset/) for
-acaedmic non-comercial use. Videos use the following syntax: **video-#id-[o|i]-#lanes.ext** where o/i stands for outgoing and ingoing videos.
+acaedmic non-comercial use. Videos use the following syntax: **video-#id-[o|i]-#lanes.ext** where o/i stands for outgoing and ingoing videos. If you find this dataset useful please
+consider citing the [paper](#related-papers).
 
 ### 6 License
 
