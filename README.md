@@ -75,8 +75,9 @@ The second one is the camera configuration/calibration file and uses the followi
         columns 720
         rows 576
 
-In addition to this files the traffic monitor needs access to the GUI file **trafficmonitor.glade** and the SVM model file **svm.yml**.
-All these files are located in the cfg directory.
+The above values must be updated to fit the input video geometry. This file can be done by using the semi-automated calibration tool provided
+by the traffic-monitor software. For this the user has to enable the **Auto calibration** option and use the calibration dialog
+(View > Show Camera Calibration). [Following video](https://www.youtube.com/watch?v=_JoWBaWCNTk) explains the calibration process.
 
 ### 4 Usage
 
