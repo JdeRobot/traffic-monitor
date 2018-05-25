@@ -206,7 +206,8 @@ int main(int argc, char **argv)
 
   try
   {
-    auto t1 = t2 = std::chrono::system_clock::now();
+    auto t1 = std::chrono::system_clock::now();
+    auto t2 = std::chrono::system_clock::now();
     cv::Size configSize = cv::Size((int)capture.get(CV_CAP_PROP_FRAME_WIDTH),(int)capture.get(CV_CAP_PROP_FRAME_HEIGHT));
     std::unique_ptr<Model> model;
     const int FPS = 30;

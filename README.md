@@ -7,6 +7,8 @@ to process traffic flow on multiple lanes simultaneously in real-time. In the cu
 
 [In this video](https://youtu.be/5Nu_BTPTc94) we can see the tool working on an offiline video of highway with multiple lanes.
 
+![Alt text](doc/traffic-monitor.png?raw=true "Some examples of traffic-monitor classification")
+
 ### 1. Related Papers
 
 If you find this code useful in your research, please consider citing:
@@ -83,9 +85,9 @@ All these files are located in the cfg directory.
 
 ### 5 traffic-monitor dataset
 
-As part of this work I created a database of video traffic with more than 100 videos. This dataset is available for [download](http://jderobot.org/store/trafficmonitor-dataset/) for
-acaedmic non-comercial use. Videos use the following syntax: **video-#id-[o|i]-#lanes.ext** where o/i stands for outgoing and ingoing videos. If you find this dataset useful please
-consider citing the [paper](#related-papers).
+As part of this work we created a database with more than 100 traffic videos. This dataset is available for [download](http://jderobot.org/store/trafficmonitor-dataset/) for
+acaedmic non-comercial use. Video's naming uses the following syntax: **video-#id-[o|i]-#lanes.ext** where o/i stands for outgoing and ingoing videos. Stats of the different
+videos ara available on the [excel sheet](traffic-monitor-video-database.xlsx). If you find this dataset useful please consider citing the traffic-monitor [paper](#related-papers).
 
 ### 6 License
 
