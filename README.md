@@ -10,7 +10,7 @@ are some examples of traffic-monitor classification.
 
 ![Alt text](doc/traffic-monitor.png?raw=true "Some examples of traffic-monitor classification")
 
-### 1. Related Papers
+### 1. <a name="related-papers"></a> Related Papers
 
 If you find this code useful in your research, please consider citing:
 
@@ -30,7 +30,7 @@ If you find this code useful in your research, please consider citing:
 
 ### 2. Installation
 
-git clone https://github.com/rkachach/traffic-monitor
+git clone https://github.com/JdeRobot/traffic-monitor
 
 #### 2.1 Requiered Dependencies
 
