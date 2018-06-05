@@ -82,7 +82,7 @@ by the traffic-monitor software. For this the user has to enable the **Auto cali
 ### 4 Usage
 
     cd build
-    ln -s ../cfg/trafficMonitor.cfg trafficmonitor.cfg
+    ln -s ../cfg/trafficmonitor.cfg trafficmonitor.cfg
     ./trafficmonitor path_to_video_file
     ./trafficmonitor ../traffic-videos/video-0042-o-4.MPG (i.e)
 
