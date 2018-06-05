@@ -37,6 +37,8 @@ git clone https://github.com/JdeRobot/traffic-monitor
 
 sudo apt-get install libopencv-dev libcairomm-1.0-dev libgtkmm-3.0-dev libgsl-dev
 
+Note: Software was tested with Opencv 3.1 FFMPEG support must be enabled.
+
 #### 2.3 Build
 
      cd traffic-monitor
