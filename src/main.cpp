@@ -108,14 +108,8 @@ void init(std::unique_ptr<Model>& model)
   }
 }
 
-/**
- *
- */
-void processImage(cv::VideoCapture& capture, cv::Size& configSize, std::unique_ptr<Model>& model){
-
-  static bool firstImage = true;
-  colorspaces::Image::FormatPtr fmt = colorspaces::Image::Format::searchFormat("RGB8");
-
+cv::Mat captureNewFrame(cv::VideoCapture& capture, cv::Size& configSize)
+{
   // Get new frame
   cv::Mat img;
   capture >> img;
@@ -131,19 +125,36 @@ void processImage(cv::VideoCapture& capture, cv::Size& configSize, std::unique_p
     cv::resize(img, img,configSize);
   }
 
-  colorspaces::Image cImg(img.cols, img.rows, fmt, &(img.data[0]));
+  return img;
+}
+
+/**
+ *
+ */
+void processImage(cv::VideoCapture& capture, cv::Size& configSize, std::unique_ptr<Model>& model){
+
+  colorspaces::Image::FormatPtr fmt = colorspaces::Image::Format::searchFormat("RGB8");
 
   timeval timeStamp;
   gettimeofday(&timeStamp, NULL);
-  if (firstImage)
+  if (model == nullptr) // First image
   {
+    cv::Mat img = captureNewFrame(capture, configSize);
+    colorspaces::Image cImg(img.cols, img.rows, fmt, &(img.data[0]));
     model.reset(new Model(cImg.clone(), timeStamp));
     init(model);
-    firstImage = false;
   }
-  else
+  else if (model->getAlgorithmCfg().play)
   {
+    cv::Mat img = captureNewFrame(capture, configSize);
+    colorspaces::Image cImg(img.cols, img.rows, fmt, &(img.data[0]));
     model->setImage(cImg, timeStamp);
+  }
+  else // Keep the current image
+  {
+    // TODO: this a workaround to fix the play/pause issue.
+    // Check why GUI is not responsive if the setImage is not called.
+    model->setImage(model->getImage(), timeStamp);
   }
 }
 
@@ -209,7 +220,7 @@ int main(int argc, char **argv)
     auto t1 = std::chrono::system_clock::now();
     auto t2 = std::chrono::system_clock::now();
     cv::Size configSize = cv::Size((int)capture.get(CV_CAP_PROP_FRAME_WIDTH),(int)capture.get(CV_CAP_PROP_FRAME_HEIGHT));
-    std::unique_ptr<Model> model;
+    std::unique_ptr<Model> model = nullptr;
     const int FPS = 30;
 
     while (capture.isOpened())
