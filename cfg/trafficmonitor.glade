@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.18.3 -->
+<!-- Generated with glade 3.22.1 -->
 <interface>
   <requires lib="gtk+" version="3.0"/>
   <object class="GtkAdjustment" id="adjustment1">
@@ -10,6 +10,9 @@
   <object class="GtkWindow" id="mainwindow">
     <property name="can_focus">False</property>
     <property name="title" translatable="yes"> Traffic Monitor </property>
+    <child>
+      <placeholder/>
+    </child>
     <child>
       <object class="GtkFixed" id="fixed1">
         <property name="visible">True</property>
@@ -112,7 +115,6 @@
             <property name="use_action_appearance">False</property>
             <property name="width_request">150</property>
             <property name="height_request">30</property>
-            <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">False</property>
             <property name="xalign">0.52999997138977051</property>
@@ -122,8 +124,8 @@
             <signal name="toggled" handler="on_show_static_road_toggled" swapped="no"/>
           </object>
           <packing>
-            <property name="x">180</property>
-            <property name="y">165</property>
+            <property name="x">653</property>
+            <property name="y">381</property>
           </packing>
         </child>
         <child>
@@ -443,7 +445,6 @@
             <property name="use_action_appearance">False</property>
             <property name="width_request">158</property>
             <property name="height_request">30</property>
-            <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">False</property>
             <property name="xalign">0.5</property>
@@ -451,7 +452,7 @@
           </object>
           <packing>
             <property name="x">15</property>
-            <property name="y">355</property>
+            <property name="y">387</property>
           </packing>
         </child>
         <child>
@@ -467,8 +468,8 @@
             <property name="draw_indicator">True</property>
           </object>
           <packing>
-            <property name="x">15</property>
-            <property name="y">380</property>
+            <property name="x">16</property>
+            <property name="y">332</property>
           </packing>
         </child>
         <child>
@@ -501,8 +502,8 @@
             <property name="draw_indicator">True</property>
           </object>
           <packing>
-            <property name="x">180</property>
-            <property name="y">380</property>
+            <property name="x">181</property>
+            <property name="y">357</property>
           </packing>
         </child>
         <child>
@@ -716,8 +717,8 @@
             <property name="draw_indicator">True</property>
           </object>
           <packing>
-            <property name="x">180</property>
-            <property name="y">190</property>
+            <property name="x">181</property>
+            <property name="y">169</property>
           </packing>
         </child>
         <child>
@@ -735,23 +736,6 @@
           <packing>
             <property name="x">15</property>
             <property name="y">140</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkCheckButton" id="pixeltrack_tracking">
-            <property name="label" translatable="yes">KLT only</property>
-            <property name="use_action_appearance">False</property>
-            <property name="width_request">170</property>
-            <property name="height_request">30</property>
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">False</property>
-            <property name="xalign">0.5</property>
-            <property name="draw_indicator">True</property>
-          </object>
-          <packing>
-            <property name="x">15</property>
-            <property name="y">190</property>
           </packing>
         </child>
         <child>
@@ -794,7 +778,6 @@
             <property name="use_action_appearance">False</property>
             <property name="width_request">183</property>
             <property name="height_request">30</property>
-            <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">False</property>
             <property name="xalign">0.44999998807907104</property>
@@ -802,7 +785,7 @@
           </object>
           <packing>
             <property name="x">15</property>
-            <property name="y">330</property>
+            <property name="y">359</property>
           </packing>
         </child>
         <child>
@@ -811,7 +794,6 @@
             <property name="use_action_appearance">False</property>
             <property name="width_request">172</property>
             <property name="height_request">30</property>
-            <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">False</property>
             <property name="xalign">0.44999998807907104</property>
@@ -819,7 +801,7 @@
           </object>
           <packing>
             <property name="x">180</property>
-            <property name="y">355</property>
+            <property name="y">385</property>
           </packing>
         </child>
         <child>
@@ -869,14 +851,14 @@
         </child>
         <child>
           <object class="GtkSeparator" id="separator1">
-            <property name="width_request">348</property>
+            <property name="width_request">336</property>
             <property name="height_request">20</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
           </object>
           <packing>
-            <property name="x">9</property>
-            <property name="y">236</property>
+            <property name="x">14</property>
+            <property name="y">213</property>
           </packing>
         </child>
         <child>
@@ -904,6 +886,9 @@
   <object class="GtkWindow" id="camera_calibration_window">
     <property name="can_focus">False</property>
     <property name="title" translatable="yes">Camera Autocalibration</property>
+    <child>
+      <placeholder/>
+    </child>
     <child>
       <object class="GtkFixed" id="fixed6">
         <property name="width_request">0</property>
@@ -1169,6 +1154,9 @@
     <property name="can_focus">False</property>
     <property name="title" translatable="yes">Background Image</property>
     <child>
+      <placeholder/>
+    </child>
+    <child>
       <object class="GtkFixed" id="fixed3">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
@@ -1283,6 +1271,9 @@
     <property name="can_focus">False</property>
     <property name="title" translatable="yes">Classification debugging</property>
     <child>
+      <placeholder/>
+    </child>
+    <child>
       <object class="GtkFixed" id="fixed5">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
@@ -1370,6 +1361,9 @@
     <property name="border_width">5</property>
     <property name="title" translatable="yes">Road size</property>
     <property name="type_hint">normal</property>
+    <child>
+      <placeholder/>
+    </child>
     <child internal-child="vbox">
       <object class="GtkBox" id="dialog-vbox2">
         <property name="visible">True</property>
@@ -1489,6 +1483,9 @@
     <property name="can_focus">False</property>
     <property name="title" translatable="yes">Input Video</property>
     <child>
+      <placeholder/>
+    </child>
+    <child>
       <object class="GtkFixed" id="fixed2">
         <property name="width_request">0</property>
         <property name="height_request">0</property>
@@ -1508,6 +1505,9 @@
   <object class="GtkWindow" id="sunpos_prob_window">
     <property name="can_focus">False</property>
     <property name="title" translatable="yes">Shadow debugging</property>
+    <child>
+      <placeholder/>
+    </child>
     <child>
       <object class="GtkFixed" id="fixed4">
         <property name="visible">True</property>
@@ -1624,6 +1624,9 @@
   <object class="GtkWindow" id="windowRectified">
     <property name="can_focus">False</property>
     <property name="title" translatable="yes">Rectified road</property>
+    <child>
+      <placeholder/>
+    </child>
     <child>
       <object class="GtkVBox" id="vbox1">
         <property name="visible">True</property>

@@ -28,7 +28,7 @@ public:
   void set_road_points(std::vector<Tpoint2D>& road_points) {roadPoints = road_points;};
 
   bool isValid();
-  bool trackingIsActive() const {return (proximityTrackingActive || pixelTrackTrackingActive || kltTrackingActive);};
+  bool trackingIsActive() const {return (proximityTrackingActive || kltTrackingActive);};
   void show();
   void save();
   void loadConfiguration();

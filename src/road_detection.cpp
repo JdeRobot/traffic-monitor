@@ -291,6 +291,12 @@ void Road::update_road_matrix()
  */
 void Road::update(const colorspaces::Image& new_image){
 
+   /** If static road is being used then nothign is updated*/
+   // if (use_static_road)
+   //    return;
+   //TODO(redo): By now only static road option is available
+   return; 
+
    unsigned int k;
    unsigned int idx;
    int detection_window_coverage=0;
@@ -301,10 +307,6 @@ void Road::update(const colorspaces::Image& new_image){
 
    /** Do the needed initialization if this is the first time we use the object*/
    // resize(new_image.height, new_image.width);
-
-   /** If static road is being used then nothign is updated*/
-   if (use_static_road)
-      return;
 
    gettimeofday(&time, NULL);
    now = (time.tv_sec*1000+time.tv_usec/1000);

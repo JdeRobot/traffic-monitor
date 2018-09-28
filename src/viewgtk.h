@@ -142,7 +142,6 @@ private:
    Widget<Gtk::CheckButton> classify;
    Widget<Gtk::CheckButton> klt_tracking;
    Widget<Gtk::CheckButton> proximity_tracking;
-   Widget<Gtk::CheckButton> pixeltrack_tracking;
    Widget<Gtk::CheckButton> switch_detection_zone;
    Widget<Gtk::CheckButton> advanced_detection;
 

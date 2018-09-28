@@ -112,7 +112,6 @@ namespace trafficmonitor {
     INIT_WIDGET(auto_calib, builder),
     INIT_WIDGET(klt_tracking, builder),
     INIT_WIDGET(proximity_tracking, builder),
-    INIT_WIDGET(pixeltrack_tracking, builder),
     INIT_WIDGET(advanced_detection, builder),
 
     //Vertical status bars
@@ -152,7 +151,6 @@ namespace trafficmonitor {
     classify->set_active(cfg.classify);
     klt_tracking->set_active(cfg.kltTrackingActive);
     proximity_tracking->set_active(cfg.proximityTrackingActive);
-    pixeltrack_tracking->set_active(cfg.pixelTrackTrackingActive);
     advanced_detection->set_active(cfg.advancedDetection);
     switch_detection_zone->set_active(cfg.switchDetectionZone);
     shadow_detection->set_active(cfg.shadowDetectionActive);
@@ -211,7 +209,6 @@ namespace trafficmonitor {
     shadow_detection->signal_toggled().connect(sigc::mem_fun(this, &ViewGtk::update_ctl));
     klt_tracking->signal_toggled().connect(sigc::mem_fun(this, &ViewGtk::update_ctl));
     proximity_tracking->signal_toggled().connect(sigc::mem_fun(this, &ViewGtk::update_ctl));
-    pixeltrack_tracking->signal_toggled().connect(sigc::mem_fun(this, &ViewGtk::update_ctl));
     advanced_detection->signal_toggled().connect(sigc::mem_fun(this, &ViewGtk::update_ctl));
 
     auto_calib->signal_toggled().connect(sigc::mem_fun(this, &ViewGtk::onCameraCalibToggled));
@@ -926,12 +923,11 @@ namespace trafficmonitor {
     // Update model control
     cfg.play                     = play->get_active();
     cfg.classify                 = classify->get_active();
-    cfg.useStaticRoad            = use_static_road->get_active();
+    cfg.useStaticRoad            = true; // Use static road always
     cfg.switchDetectionZone      = switch_detection_zone->get_active();
     cfg.shadowDetectionActive    = shadow_detection->get_active();
     cfg.kltTrackingActive        = klt_tracking->get_active();
     cfg.proximityTrackingActive  = proximity_tracking->get_active();
-    cfg.pixelTrackTrackingActive = pixeltrack_tracking->get_active();
     cfg.cameraAutoCalibration    = auto_calib->get_active();
     cfg.advancedDetection        = advanced_detection->get_active();
 
