@@ -180,15 +180,6 @@ void checkArgs(int argc, char **argv)
     std::cout << "Usage: ./trafficmonitor video_file_path" << std::endl;
     exit(1);
   }
-  else
-  {
-    std::ifstream infile(argv[1]);
-    if (!infile.good())
-    {
-      std::cout << "Cannot open video file '" << string(argv[1]) << "'" << std::endl;
-      exit(1);
-    }
-  }
 }
 
 void configureErrorHandling()
